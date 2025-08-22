@@ -5,7 +5,7 @@ pygame.init()
 window = pygame.display.set_mode(size=(600, 480))
 print ('Loop End')
 print('Loop start')
-while true:
+while True:
     #check for all events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
