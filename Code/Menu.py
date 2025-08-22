@@ -32,7 +32,6 @@ class Menu:
                     pygame.quit()  # close window
                     quit()  # end pygame
 
-
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont("Lucida Sans Typewriter", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
