@@ -53,6 +53,7 @@ class EntityMediator:
                 if ent.name == 'Player2':
                     ent.score += enemy.score
 
+
     @staticmethod
     def verify_collision(entity_list: list[Entity]):
         for i in range(len(entity_list)):
