@@ -7,7 +7,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from Code.Const import C_WHITE, WIN_HEIGTH, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
+from Code.Const import C_WHITE, WIN_WIDTH, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
     TIMEOUT_STEP, TIMEOUT_LEVEL
 from Code.Enemy import Enemy
 from Code.Entity import Entity
@@ -78,8 +78,8 @@ class Level:
 
             # printed text
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', C_WHITE, (10, 5))
-            self.level_text(14, f'fps: {clock.get_fps() :.0f}', C_WHITE, (10, WIN_HEIGTH - 35))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGTH - 20))
+            self.level_text(14, f'fps: {clock.get_fps() :.0f}', C_WHITE, (10, WIN_WIDTH - 35))
+            self.level_text(14, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_WIDTH - 20))
             pygame.display.flip()
             # Collisions
             EntityMediator.verify_collision(entity_list=self.entity_list)
@@ -90,11 +90,3 @@ class Level:
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)
-
-    def run(self):
-        while True:
-            for ent in self.entity_list:
-                self.window.blit(source=ent.surf, dest=ent.rect)
-                ent.move()
-                pygame.display.flip()
-        pass

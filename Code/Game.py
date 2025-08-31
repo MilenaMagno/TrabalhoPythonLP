@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import pygame
 
-from Code.Const import WIN_WIDTH, WIN_HEIGTH
+from Code.Const import WIN_WIDTH
 from Code.Level import Level
 from Code.Menu import Menu
 from Code.Menu import MENU_OPTION
@@ -11,7 +11,7 @@ from Code.Menu import MENU_OPTION
 class Game:
     def __init__(self):
         pygame.init()
-        self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGTH))
+        self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_WIDTH))
 
     def run(self, ):
         while True:
@@ -23,7 +23,7 @@ class Game:
                 level = Level(self.window, 'Level1', menu_return, player_score)
                 level_return = level.run(player_score)
                 if level_return:
-                    level = Level(self.window, 'Level2', menu_return)
+                    level = Level(self.window, 'Level2', menu_return, player_score)
                     level_return = level.run(player_score)
 
             elif menu_return == MENU_OPTION[4]:
