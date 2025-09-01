@@ -27,7 +27,7 @@ class Level:
         player = EntityFactory.get_entity('Player1')
         player.score = player_score[0]
         self.entity_list.append(player)
-        if game_mode in [MENU_OPTION[1], [MENU_OPTION[2]]]:
+        if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
             player = EntityFactory.get_entity('Player2')
             player.score = player_score[1]
             self.entity_list.append(player)
