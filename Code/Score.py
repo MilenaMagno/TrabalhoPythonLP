@@ -1,16 +1,12 @@
 import sys
 from datetime import datetime
-
 import pygame
 from pygame import Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE
 from pygame.font import Font
-
 from Code.Const import C_YELLOW, SCORE_POS, MENU_OPTION, C_WHITE
 from Code.DBProxy import DBProxy
 
-
 class Score:
-
     def __init__(self, window: Surface):
         self.window = window
         self.surf = pygame.image.load('./asset/ScoreBg.png').convert_alpha()
@@ -25,16 +21,16 @@ class Score:
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
             self.score_text(48, 'YOU WIN!', C_YELLOW, SCORE_POS['Title'])
+            text = 'Enter Player 1 name (8 characters):'
+            score = player_score[0]
             if game_mode == MENU_OPTION[0]:
                 score = player_score[0]
-                text = 'Enter Player 1 name (8 characters):'
             if game_mode == MENU_OPTION[1]:
                 score = (player_score[0] + player_score[1]) / 2
                 text = 'Enter Team name (8 characters):'
             if game_mode == MENU_OPTION[2]:
                 if player_score[0] >= player_score[1]:
                     score = player_score[0]
-                    text = 'Enter Player 1 name (8 characters):'
                 else:
                     score = player_score[1]
                     text = 'Enter Player 2 name (8 characters):'
@@ -66,7 +62,6 @@ class Score:
         db_proxy = DBProxy('DBScore')
         list_score = db_proxy.retrieve_top10()
         db_proxy.close()
-
         for player_score in list_score:
             id_, name, score, date = player_score
             self.score_text(20, f'{name}          {score : 05d}        {date}', C_YELLOW,
