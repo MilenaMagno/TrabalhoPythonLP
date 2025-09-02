@@ -2,7 +2,7 @@ import pygame
 import time
 from pygame import Surface, Rect
 from pygame.font import Font
-from Code.Const import C_YELLOW, GAMEOVER_POS
+from Code.Const import C_YELLOW, GAMEOVER_POS, C_RED
 from Code.Menu import Menu
 
 class GameOver:
@@ -28,9 +28,15 @@ class GameOver:
             if time.time() - start_time >= duration:
                 running = False
             self.window.blit(source=self.surf, dest=self.rect)
-            self.gameover_text(48, 'GAME OVER!', C_YELLOW, GAMEOVER_POS['Title'])
+            self.gameover_text(48, 'GAME OVER!', C_RED, GAMEOVER_POS['Title'])
             pygame.display.flip()
             pass
         pygame.mixer.music.stop()
         main_menu = Menu(self.window)
         main_menu.run()
+
+    def gameover_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
+        text_font: Font = pygame.font.SysFont(name='Lucida Sans Typewriter', size=text_size)
+        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
+        text_rect: Rect = text_surf.get_rect(center=text_center_pos)
+        self.window.blit(source=text_surf, dest=text_rect)

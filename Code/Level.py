@@ -5,8 +5,8 @@ import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from Code.Const import C_WHITE, WIN_WIDTH, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
-    TIMEOUT_STEP, TIMEOUT_LEVEL
+from Code.Const import WIN_WIDTH, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
+    TIMEOUT_STEP, TIMEOUT_LEVEL, C_BLACK
 from Code.Enemy import Enemy
 from Code.Entity import Entity
 from Code.EntityFactory import EntityFactory
@@ -39,8 +39,6 @@ class Level:
         clock = pygame.time.Clock()
         while True:
             clock.tick(60)
-            if self.players.health <= 0:
-                return 'game_over'
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
@@ -73,11 +71,11 @@ class Level:
                     if isinstance(ent, Player):
                         found_player = True
                 if not found_player:
-                    return False
+                    return 'game_over'
             # printed text
-            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_WHITE, (10, 5))
-            self.level_text(14, f'fps: {clock.get_fps():.0f}', C_WHITE, (10, WIN_WIDTH - 35))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_WIDTH - 20))
+            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_BLACK, (10, 5))
+            self.level_text(14, f'fps: {clock.get_fps():.0f}', C_BLACK, (10, WIN_WIDTH - 35))
+            self.level_text(14, f'entidades: {len(self.entity_list)}', C_BLACK, (10, WIN_WIDTH - 20))
             pygame.display.flip()
             # Collisions
             EntityMediator.verify_collision(entity_list=self.entity_list)

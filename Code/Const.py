@@ -6,6 +6,9 @@ C_WHITE = (255, 255, 255)
 C_YELLOW = (255, 255, 128)
 C_GREEN = (0, 128, 0)
 C_CYAN = (0, 128, 128)
+C_RED = (255, 0, 0)
+C_BLACK = (0, 0, 0)
+C_REDD = (139, 0, 0)
 
 # E
 ENTITY_DAMAGE = {
@@ -101,10 +104,10 @@ ENTITY_SPEED = {
 }
 
 ENTITY_SHOT_DELAY = {
-    'Player1': 25,
-    'Player2': 25,
+    'Player1': 10,
+    'Player2': 10,
     'Enemy1': 50,
-    'Enemy2': 80,
+    'Enemy2': 60,
 }
 
 EVENT_ENEMY = pygame.USEREVENT + 1
@@ -127,7 +130,7 @@ PLAYER_KEY_LEFT = {'Player1': pygame.K_LEFT,
                    'Player2': pygame.K_a}
 PLAYER_KEY_RIGHT = {'Player1': pygame.K_RIGHT,
                     'Player2': pygame.K_d}
-PLAYER_KEY_SHOOT = {'Player1': pygame.K_RCTRL,
+PLAYER_KEY_SHOOT = {'Player1': pygame.K_m,
                     'Player2': pygame.K_LCTRL}
 
 # S
