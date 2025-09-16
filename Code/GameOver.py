@@ -2,7 +2,7 @@ import pygame
 import time
 from pygame import Surface, Rect
 from pygame.font import Font
-from Code.Const import C_YELLOW, GAMEOVER_POS, C_RED
+from Code.Const import GAMEOVER_POS, C_RED
 from Code.Menu import Menu
 
 class GameOver:
